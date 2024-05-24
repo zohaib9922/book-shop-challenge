@@ -159,3 +159,9 @@ form{
 .import-file-container form button:hover {
     background-color: #45a049;
 }
+.info{
+    text-align: center;
+    padding: 20px;
+    background-color: #cce5ff;
+    border-radius: 6px;
+}

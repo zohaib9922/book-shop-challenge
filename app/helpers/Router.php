@@ -4,8 +4,8 @@ namespace Book\Shop\Helpers;
 
 class Router
 {
-    protected $routes = [];
-    protected $basePath = null;
+    protected array $routes = [];
+    protected ?string $basePath = null;
 
     private function register($method, $pattern, $function): void
     {
@@ -46,6 +46,7 @@ class Router
     {
         $method = $_SERVER['REQUEST_METHOD'];
         $uri = substr(rawurldecode($_SERVER['REQUEST_URI']), strlen($this->getBasePath()));
+        
         // split params
         $uri = explode("?", $uri)[0];
 

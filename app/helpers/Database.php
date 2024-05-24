@@ -8,7 +8,7 @@ use Exception;
 class Database
 {
     private static $instance;
-    private $connection;
+    private PDO $connection;
 
     public function __construct()
     {

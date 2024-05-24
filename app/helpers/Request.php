@@ -6,9 +6,9 @@ class Request
 {
     protected static $instance = null;
 
-    public $requestMethod = '';
-    public $params = [];
-    protected $input = [];
+    public string $requestMethod = '';
+    public array $params = [];
+    protected array $input = [];
 
     public function __construct()
     {

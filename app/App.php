@@ -16,7 +16,6 @@ class App
         
         if (file_exists("app/controllers/{$url[0]}.php")) {
             $this->controller = $url[0];
-            unset($url[0]);
         }
 
         $namespace = "Book\\Shop\\Controllers\\$this->controller";
@@ -25,9 +24,9 @@ class App
         if (isset($url[1])) {
             if (method_exists($this->controller, $url[1])) {
                 $this->method = $url[1];
-                unset($url[1]);
             }
         }
+
         $request = new Request();
         $this->params = [$request];
 
@@ -39,6 +38,7 @@ class App
         $router = (new Routes())->initRoutes();
         $route = $router->checkRoute();
         if (empty($route)) {
+            // we can return 404 route too
             die('404');
         }
         return explode("@", $route['fn']);

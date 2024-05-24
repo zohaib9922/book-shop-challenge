@@ -41,16 +41,20 @@ class SaleController extends Controller
                 }
             }
 
-            (new Sale())->insert(
-                ["id", "customer_id", "product_id", "sale_date", "version"],
-                [
-                    $record['sale_id'] ?? null,
-                    $customerId,
-                    $record['product_id'] ?? 0,
-                    $record['sale_date'] ?? null,
-                    $record['version'] ?? "",
-                ]
-            );
+            $sale = new Sale();
+            $saleRecord = $sale->getById($record['sale_id']);
+            if (empty($saleRecord)) {
+                $sale->insert(
+                    ["id", "customer_id", "product_id", "sale_date", "version"],
+                    [
+                        $record['sale_id'] ?? null,
+                        $customerId,
+                        $record['product_id'] ?? 0,
+                        $record['sale_date'] ?? null,
+                        $record['version'] ?? "",
+                    ]
+                );
+            }
         }
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);

@@ -2,9 +2,11 @@
 
 namespace Book\Shop\Helpers;
 
+use PDO;
+
 class Migration
 {
-    protected $database;
+    protected PDO $database;
 
     public function __construct()
     {

@@ -9,10 +9,11 @@ use Book\Shop\Helpers\Database;
 abstract class Model
 {
     private Database $database;
-    protected $table;
+    protected string $table;
     protected string $primaryColumn = "id";
     private PDOStatement $statement;
     private string $columns = "*";
+    private string $conditions = "";
 
     /**
      * Constructs a new Model instance.
@@ -28,7 +29,7 @@ abstract class Model
 
     /**
      * Specifies a relationship with another model using a single join.
-     *
+     * 
      */
     public function with(string $class, string $key): self
     {
@@ -52,8 +53,23 @@ abstract class Model
             $joins[] = " INNER JOIN $model->table ON " . $model->table . "." . $model->primaryColumn . " = $this->table.$key";
         }
 
-        $sql = "select $this->columns from $this->table" . implode(" ", $joins);
+        $where = '';
+        if (!empty($this->conditions)) {
+            $where = " where " . $this->conditions;
+        }
+
+        $sql = "select $this->columns from $this->table" . implode(" ", $joins) . $where;
         $this->statement = $this->database->getConnection()->query($sql);
+        return $this;
+    }
+
+    /**
+     * Specifies conditions to apply in the query.
+     *
+     */
+    public function where(array $conditions): self
+    {
+        $this->conditions = implode(" ", $conditions);
         return $this;
     }
 
