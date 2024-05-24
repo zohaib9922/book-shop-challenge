@@ -20,10 +20,21 @@ class Router
         $this->register('GET', $pattern, $function);
     }
 
+    public function post($pattern, $function): void
+    {
+        $this->register('POST', $pattern, $function);
+    }
+
+    public function all(): array
+    {
+        return $this->routes;
+    }
+
     public function checkRoute(): array
     {
         $method = $_SERVER['REQUEST_METHOD'];
         $uri = substr(rawurldecode($_SERVER['REQUEST_URI']), strlen($this->getBasePath()));
+        // split params
         $uri = explode("?", $uri)[0];
 
         if (empty($uri)) {

@@ -12,6 +12,7 @@ class Routes
         $router->get('/', 'HomerController@index');
         $router->get('/migrate/up', 'MigrationController@up');
         $router->get('/migrate/down', 'MigrationController@down');
+        $router->post('/import/sales', 'SaleController@importSales');
 
         return $router;
     }

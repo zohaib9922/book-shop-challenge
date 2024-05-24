@@ -2,6 +2,8 @@
 
 namespace Book\Shop;
 
+use Book\Shop\Helpers\Request;
+
 class App
 {
     protected $controller = 'HomeController';
@@ -26,12 +28,13 @@ class App
                 unset($url[1]);
             }
         }
-        $this->params = [];
+        $request = new Request();
+        $this->params = [$request];
 
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
-    private function parseUrl()
+    private function parseUrl(): array
     {
         $router = (new Routes())->initRoutes();
         $route = $router->checkRoute();

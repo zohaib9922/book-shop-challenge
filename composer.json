@@ -1,6 +1,6 @@
 {
     "name": "book/shop",
-    "description": "Code challenge",
+    "description": "Sales reporting system",
     "autoload": {
         "psr-4": {
             "Book\\Shop\\": "app/"
@@ -12,6 +12,7 @@
         }
     ],
     "require": {
+        "twig/twig": "^3.10",
         "ext-pdo": "^7.4"
     }
 }

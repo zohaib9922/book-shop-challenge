@@ -4,8 +4,11 @@ namespace Book\Shop;
 
 class Controller
 {
-    public function view(): string
+    public function view($view): string
     {
-        return 'My view';
+        return View::load(
+            $view . ".twig",
+            VIEW_PATH
+        );
     }
 }
