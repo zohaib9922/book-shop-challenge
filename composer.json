@@ -1,0 +1,17 @@
+{
+    "name": "book/shop",
+    "description": "Code challenge",
+    "autoload": {
+        "psr-4": {
+            "Book\\Shop\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Zohaib Hassan"
+        }
+    ],
+    "require": {
+        "ext-pdo": "^7.4"
+    }
+}
