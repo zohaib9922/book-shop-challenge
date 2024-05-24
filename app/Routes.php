@@ -10,6 +10,8 @@ class Routes
     {
         $router = new Router();
         $router->get('/', 'HomerController@index');
+        $router->get('/migrate/up', 'MigrationController@up');
+        $router->get('/migrate/down', 'MigrationController@down');
 
         return $router;
     }
