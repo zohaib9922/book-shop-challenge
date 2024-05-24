@@ -15,16 +15,28 @@ class Router
         ];
     }
 
+    /**
+     * Registers a route for the GET HTTP method.
+     * 
+     */
     public function get($pattern, $function): void
     {
         $this->register('GET', $pattern, $function);
     }
 
+    /**
+     * Registers a route for the POST HTTP method.
+     * 
+     */
     public function post($pattern, $function): void
     {
         $this->register('POST', $pattern, $function);
     }
 
+    /**
+     * Retrieves all registered routes.
+     
+     */
     public function all(): array
     {
         return $this->routes;

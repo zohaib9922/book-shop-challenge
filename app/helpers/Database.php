@@ -22,6 +22,11 @@ class Database
         }
     }
 
+    /**
+     * Retrieves the singleton instance of the Database class.
+     *
+     * @return Database The singleton instance.
+     */
     public static function getInstance(): Database
     {
         if (self::$instance == null) {
@@ -30,7 +35,11 @@ class Database
         return self::$instance;
     }
 
-
+    /**
+     * Retrieves the PDO database connection object.
+     *
+     * @return PDO The PDO database connection object.
+     */
     public function getConnection(): PDO
     {
         return $this->connection;

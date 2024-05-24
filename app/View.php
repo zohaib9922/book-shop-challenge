@@ -7,10 +7,10 @@ use Twig\Loader\FilesystemLoader;
 
 class View
 {
-    public static function load(string $name, string $path): string
+    public static function load(string $name, string $path, ?array $data = []): string
     {
         $loader = new FilesystemLoader($path);
         $view = new Environment($loader, ['debug' => true]);
-        return $view->render($name);
+        return $view->render($name, $data);
     }
 }
